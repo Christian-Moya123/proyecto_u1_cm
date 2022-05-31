@@ -6,19 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CitaMedica {
+public class CitaMedica2 {
 	
 	private LocalDateTime fechaCita;
 	
-	private Doctor doctor;
-	private Paciente paciente;
 	
-	//2) DI por constructor
-	public CitaMedica(Doctor doctor, Paciente paciente) {
-		// TODO Auto-generated constructor stub
-		this.doctor = doctor;
-		this.paciente = paciente;
-	}
+	//3) DI por metodo set
+	private Doctor doctor;// A SUS METODO SET LE PONGO @AUTOWIRED
+	private Paciente paciente;//A SUS METODO SET LE PONGO @AUTOWIRED
+	
 	
 	public String agendar(LocalDateTime fechaCita, String nombre, String apellido, int edad, String ciudad,
 	String nombrePaciente, int edadPaciente){
@@ -40,12 +36,17 @@ public class CitaMedica {
 	public Doctor getDoctor() {
 		return doctor;
 	}
+	@Autowired
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
+	
+	
 	public Paciente getPaciente() {
 		return paciente;
 	}
+	
+	@Autowired
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
@@ -53,7 +54,7 @@ public class CitaMedica {
 	public LocalDateTime getFechaCita() {
 		return fechaCita;
 	}
-
+	
 	public void setFechaCita(LocalDateTime fechaCita) {
 		this.fechaCita = fechaCita;
 	}

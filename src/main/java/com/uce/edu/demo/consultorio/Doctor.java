@@ -1,10 +1,31 @@
 package com.uce.edu.demo.consultorio;
 
+import org.springframework.stereotype.Component;
+
+//Les voy a poner una MetaData, atraves de anotaciones
+@Component
 public class Doctor {
 	private String nombre;
-	private String Apellido;
+	private String apellido;
+	private int edad;
+	private String ciudad;
 	
 	//SET y GET
+	
+	public String getCiudad() {
+		return ciudad;
+	}
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -12,10 +33,10 @@ public class Doctor {
 		this.nombre = nombre;
 	}
 	public String getApellido() {
-		return Apellido;
+		return apellido;
 	}
 	public void setApellido(String apellido) {
-		Apellido = apellido;
+		this.apellido = apellido;
 	} 
 	
 	
