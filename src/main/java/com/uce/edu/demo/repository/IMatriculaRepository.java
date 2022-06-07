@@ -10,12 +10,12 @@ public interface IMatriculaRepository {
 		public void insertar(Matricula matricula);
 		
 		//R: leer/ buscar
-		public Matricula buscar(String matricula);
+		public Matricula buscar(String numero);
 		
 		//U: actualizar
 		public void actualizar(Matricula matricula);
 		
 		//D: eliminar
-		public void eliminar(String matricula);
+		public void eliminar(String numero);
 
 }

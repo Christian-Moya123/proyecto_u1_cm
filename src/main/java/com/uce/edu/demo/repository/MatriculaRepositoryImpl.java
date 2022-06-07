@@ -15,12 +15,12 @@ public class MatriculaRepositoryImpl implements IMatriculaRepository{
 	}
 
 	@Override
-	public Matricula buscar(String matricula) {
+	public Matricula buscar(String numero) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha buscado o en la base el estudiante:" + matricula );
+		System.out.println("Se ha buscado o en la base el estudiante:" + numero );
 		
 		Matricula m = new Matricula();
-		m.setNumero(matricula);
+		m.setNumero(numero);
 		return m;
 	}
 
@@ -31,9 +31,9 @@ public class MatriculaRepositoryImpl implements IMatriculaRepository{
 	}
 
 	@Override
-	public void eliminar(String matricula) {
+	public void eliminar(String numero) {
 		// TODO Auto-generated method stub
-		System.out.println("Se ha eliminado o en la base la matriculaa:" + matricula);
+		System.out.println("Se ha eliminado o en la base la matriculaa:" + numero);
 	}
 
 }

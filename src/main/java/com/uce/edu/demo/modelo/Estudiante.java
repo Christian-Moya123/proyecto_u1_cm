@@ -5,8 +5,6 @@ public class Estudiante {
 	private String apellido;
 	private String cedula;
 	
-	private Materia materia;
-	
 	@Override
 	public String toString() {
 		return "Estudiante [nombre = " + nombre + ", apellido = " + apellido + ", cedula = " + cedula + "]";
