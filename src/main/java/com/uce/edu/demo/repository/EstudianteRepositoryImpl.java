@@ -1,14 +1,19 @@
 package com.uce.edu.demo.repository;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
 import com.uce.edu.demo.modelo.Estudiante;
 
+@Repository
 public class EstudianteRepositoryImpl implements IEstudianteRepository{
 
 	@Override
 	public void insertar(Estudiante e) {
 		// TODO Auto-generated method stub
 		//aqui se realiza la inserccion en la base de datos
-		System.out.println("Se ha insertado en la base el estudiante:" +e);
+		System.out.println("Se ha insertado en la base el estudiante:" + e);
+		
 	}
 
 
@@ -31,7 +36,10 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository{
 	public Estudiante buscar(String apellido) {
 		// TODO Auto-generated method stub
 		System.out.println("Se ha buscado o en la base el estudiante:" + apellido );
-		return null;
+		
+		Estudiante e = new Estudiante();
+		e.setApellido(apellido);
+		return e;
 	}
 
 }

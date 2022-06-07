@@ -5,6 +5,13 @@ public class Estudiante {
 	private String apellido;
 	private String cedula;
 	
+	private Materia materia;
+	
+	@Override
+	public String toString() {
+		return "Estudiante [nombre = " + nombre + ", apellido = " + apellido + ", cedula = " + cedula + "]";
+	}
+	
 	//SET y GET
 	public String getNombre() {
 		return nombre;
@@ -12,7 +19,7 @@ public class Estudiante {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellido(String apellido) {
+	public String getApellido() {
 		return apellido;
 	}
 	public void setApellido(String apellido) {
