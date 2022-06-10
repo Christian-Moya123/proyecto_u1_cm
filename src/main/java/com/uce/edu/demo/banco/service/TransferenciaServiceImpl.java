@@ -43,4 +43,39 @@ public class TransferenciaServiceImpl implements ITransferenciaService{
 		this.iTranferenciaRepository.insertar(t);
 	}
 
+	@Override
+	public void actualizar(String ctaOrigen, String ctaDestino, BigDecimal monto) {
+		// TODO Auto-generated method stub
+		CuentaBancaria cOrigen = this.bancariaService.buscar(ctaOrigen);
+		BigDecimal saldoOrigen = cOrigen.getSaldo();
+		BigDecimal nuevoSaldoOrigen = saldoOrigen.subtract(monto);
+		cOrigen.setSaldo(nuevoSaldoOrigen);
+		this.bancariaService.actualizar(cOrigen);
+		
+		CuentaBancaria cDestino = this.bancariaService.buscar(ctaDestino);
+		BigDecimal saldoDestino = cDestino.getSaldo();
+		BigDecimal nuevoSaldoDestino = saldoDestino.add(monto);
+		cDestino.setSaldo(nuevoSaldoDestino);
+		this.bancariaService.actualizar(cDestino);
+		
+		Transferencia t = new Transferencia();
+		t.setNumeroCuentaOrigen(ctaOrigen);
+		t.setNumeroCuentaDestino(ctaDestino);
+		t.setMontoTransferir(monto);
+		t.setFechaTransferencia(LocalDateTime.now());
+		this.iTranferenciaRepository.insertar(t);;
+	}
+
+	@Override
+	public Transferencia buscar(String numero) {
+		// TODO Auto-generated method stub
+		return this.iTranferenciaRepository.buscar(numero);
+	}
+
+	@Override
+	public void borrarTransferencia(String numero) {
+		// TODO Auto-generated method stub
+		this.iTranferenciaRepository.eliminar(numero);
+	}
+
 }
