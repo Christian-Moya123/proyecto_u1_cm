@@ -50,6 +50,7 @@ public class ProyectoU1CmApplication implements CommandLineRunner{
 		
 		// TODO Auto-generated method stub
 		//////////////////////////////////////////////////////TRANSFERENCIA
+		System.out.println("Transferencia");
 		iTranferenciaService.realizarTranferencia("12", "13", new BigDecimal(20));
 		iTranferenciaService.actualizar("12", "130", new BigDecimal(200));
 		iTranferenciaService.borrarTransferencia("12");
@@ -57,6 +58,7 @@ public class ProyectoU1CmApplication implements CommandLineRunner{
 		System.out.println("");
 		
 		//////////////////////////////////////////////////////Deposito
+		System.out.println("Deposito");
 		this.depositoService.realizarDeposito("14", new BigDecimal(50));
 		depositoService.actualizarDeposito("13", new BigDecimal(600));
 		depositoService.borrarDeposito("122");
@@ -64,6 +66,7 @@ public class ProyectoU1CmApplication implements CommandLineRunner{
 		System.out.println("");
 		
 		////////////////////////////////////////////////////////Cuenta Bancaria
+		System.out.println("Cuenta Bnacaria");
 		CuentaBancaria cb1 = new CuentaBancaria();
 		cb1.setNumero("000123");
 		cb1.setSaldo(new BigDecimal(500));
@@ -83,6 +86,7 @@ public class ProyectoU1CmApplication implements CommandLineRunner{
 		System.out.println("");
 		
 		//////////////////////////////////////////////////////////RETIRO
+		System.out.println("Retiro");
 		this.retiroService.realizarRetiro("88899", new BigDecimal(501));
 		retiroService.actualizarRetiro("88899", new BigDecimal(6009));
 		retiroService.borrarRetiro("88899");
