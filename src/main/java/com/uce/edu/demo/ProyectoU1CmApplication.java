@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.uce.edu.demo.banco.repository.ITransferenciaRepository;
 import com.uce.edu.demo.banco.service.ICuentaBancariaService;
 import com.uce.edu.demo.banco.service.IDepositoService;
+import com.uce.edu.demo.banco.service.IFachadaCuentaBancaria;
 import com.uce.edu.demo.banco.service.IRetiroService;
 import com.uce.edu.demo.banco.service.ITransferenciaService;
 import com.uce.edu.demo.modelo.Estudiante;
@@ -35,10 +36,7 @@ import com.uce.edu.demo.service.IMatriculaService;
 public class ProyectoU1CmApplication implements CommandLineRunner{
 	
 	@Autowired
-	private IInventarioService iInventarioService;
-	
-	@Autowired
-	private IProductoService iProductoService;
+	private IFachadaCuentaBancaria bancaria;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1CmApplication.class, args);
@@ -49,22 +47,9 @@ public class ProyectoU1CmApplication implements CommandLineRunner{
 		
 		// TODO Auto-generated method stub
 	
+		BigDecimal interes =  this.bancaria.calcularInteres("1234");
+		System.out.println(interes);
 		
-		
-		this.iProductoService.insertar("Leche", 5, new BigDecimal(50),LocalDateTime.of(2021, 12, 31, 1, 45),"444");
-		this.iProductoService.insertar("Yogurt", 54, new BigDecimal(21),LocalDateTime.of(2020, 1, 24, 4, 15),"333");
-		this.iProductoService.insertar("Carne", 15, new BigDecimal(10),LocalDateTime.of(2018, 2, 01, 12, 05),"222");
-		this.iProductoService.insertar("Agua", 22, new BigDecimal(55),LocalDateTime.of(2019, 11, 02, 2, 11),"111");
-		this.iProductoService.insertar("Carne", 15, new BigDecimal(10),LocalDateTime.of(2022, 8, 11, 21, 59),"555");
-		
-		this.iProductoService.ingresarInventario("55", LocalDateTime.now());
-		
-		this.iInventarioService.imprimirInventario();
-		
-		System.out.println("");
-		System.out.println("Invetario Filtrado");
-		this.iProductoService.consultar(LocalDateTime.of(2019, 12, 31, 1, 45));
-		this.iInventarioService.imprimirInventario();
 	
 	}
 
