@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.modelo.Matricula;
+import com.uce.edu.demo.modelo.ProfesorGeneral;
+import com.uce.edu.demo.modelo.ProfesorMateria;
 import com.uce.edu.demo.repository.IEstudianteRepository;
 import com.uce.edu.demo.repository.IMatriculaRepository;
 
@@ -12,10 +14,18 @@ public class MatriculaServiceImpl implements IMatriculaService {
 	
 	@Autowired
 	private IMatriculaRepository matriculaRepository;
-
+	
+	@Autowired
+	private ProfesorGeneral profesorGeneral;
+	
+	@Autowired
+	private ProfesorMateria profesorMateria;
+	
 	@Override
 	public void ingresarMatricula(Matricula e) {
 		// TODO Auto-generated method stub
+		System.out.println("DI desde Service Singlenton " + this.profesorGeneral);
+		System.out.println("DI desde Service Proptotipe" + this.profesorMateria);
 		this.matriculaRepository.insertar(e);
 	}
 

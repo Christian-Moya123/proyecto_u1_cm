@@ -22,7 +22,7 @@ public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository{
 		cta.setNumero(numero);
 		cta.setSaldo(new BigDecimal(100));
 		cta.setTipo("AF");
-		cta.getTipo();
+		
 		return cta;
 	}
 
