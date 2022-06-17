@@ -17,6 +17,10 @@ import com.uce.edu.demo.banco.service.IDepositoService;
 import com.uce.edu.demo.banco.service.IFachadaCuentaBancaria;
 import com.uce.edu.demo.banco.service.IRetiroService;
 import com.uce.edu.demo.banco.service.ITransferenciaService;
+import com.uce.edu.demo.libreria.modelo.LibreriaPrivada;
+import com.uce.edu.demo.libreria.modelo.LibreriaPublica;
+import com.uce.edu.demo.libreria.modelo.Registro;
+import com.uce.edu.demo.libreria.service.IRegistroService;
 import com.uce.edu.demo.modelo.Estudiante;
 import com.uce.edu.demo.modelo.Materia;
 import com.uce.edu.demo.modelo.Matricula;
@@ -37,20 +41,22 @@ import com.uce.edu.demo.service.IMatriculaService;
 @SpringBootApplication
 public class ProyectoU1CmApplication implements CommandLineRunner{
 	
-	@Autowired
-	private ProfesorGeneral general;
 	
 	@Autowired
-	private ProfesorGeneral general1;
+	private LibreriaPrivada libreriaPrivada1;
 	
 	@Autowired
-	private ProfesorMateria materia;
+	private LibreriaPrivada libreriaPrivada2;
 	
 	@Autowired
-	private ProfesorMateria materia1;
+	private LibreriaPublica libreriaPublica1;
 	
 	@Autowired
-	private IMatriculaService iMatriculaService;
+	private LibreriaPublica libreriaPublica2;
+	
+	@Autowired
+	private IRegistroService iRegistroService;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1CmApplication.class, args);
@@ -59,35 +65,35 @@ public class ProyectoU1CmApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		// TODO Auto-generated method stub
-		System.out.println("Ejemplo singlenton");
-		this.general.setNombre("Christian");
-		this.general.setApellido("Moya");
-		
-		System.out.println(this.general);
-		System.out.println("---");
-		System.out.println(this.general1);
-		this.general1.setNombre("Pepe");
-		System.out.println("---");
-		System.out.println(this.general);
-		System.out.println("---");
-		System.out.println(this.general1);
-		this.general1.setNombre("Pepe");
+		System.out.println("Ejemplo Singlenton");
+		this.libreriaPrivada1.setnLibros(88);
+		this.libreriaPrivada1.setNombre("Anabel");
+		System.out.println(this.libreriaPrivada1);
+		System.out.println(this.libreriaPrivada2);
+		this.libreriaPrivada2.setNombre("Agua");
+		System.out.println(this.libreriaPrivada1);
 		System.out.println();
-		System.out.println("Ejemplo prototipe");
-		this.materia.setNombre("Ana");
-		this.materia.setApellido("Teran");
-		System.out.println(this.materia);
-		System.out.println("------------");
-		System.out.println(this.materia1);
-		System.out.println("");
-		Matricula matricula1 = new Matricula();
-		matricula1.setEstudiante(new Estudiante());
-		List<Materia> materia = new ArrayList<>();
-		matricula1.setMateria(new ArrayList<Materia>());
-		matricula1.setNumero("1234");
+		System.out.println("Ejemplo Prototype");
+		this.libreriaPublica1.setnLibros(44);
+		this.libreriaPublica1.setNombre("Cards");
+		System.out.println(this.libreriaPublica1);
+		System.out.println(this.libreriaPublica2);
+		this.libreriaPublica2.setNombre("12 QI");
+		System.out.println(this.libreriaPublica1);
+		System.out.println();
+		Registro registro1 = new Registro();
+		registro1.setlPrivada(libreriaPrivada1);
+		registro1.setlPublica(libreriaPublica1);
+		registro1.setNumero("1234");
 		
-		this.iMatriculaService.ingresarMatricula(matricula1);
+		this.iRegistroService.ingresarRegistro(registro1);
+		System.out.println();
+		Registro registro2 = new Registro();
+		registro2.setlPrivada(libreriaPrivada1);
+		registro2.setlPublica(libreriaPublica1);
+		registro2.setNumero("789");
+		
+		this.iRegistroService.ingresarRegistro(registro2);
 	}
 
 }
